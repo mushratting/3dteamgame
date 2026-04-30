@@ -3,26 +3,33 @@ using UnityEngine;
 // Example of an interactable object that implements the IInteractable interface.
 // In this case, the object might be a diary, note, or item with descriptive text.
 
-public class interactableobject : MonoBehaviour, IInteractable
+public class interactableobject : MonoBehaviour
 {
-    public string objectName = "A mysterious book"; // Name shown in logs (can customize per object)
+    public GameObject[] toActivate;
+    public GameObject[] toDeactivate;
 
-    // Triggered when the player looks at the object
-    public void OnLookAt()
+    void Start()
     {
-        Debug.Log("Looking at: " + objectName);
+
     }
 
-    // Triggered when the player presses the interact button while looking at the object
-    public void OnInteract()
+    private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Interacting with: " + objectName);
-        // You could show a UI panel here, play a sound, etc.
-    }
+        if (collider.gameObject.CompareTag("Player"))
+        {
+           foreach (GameObject obj in toActivate)
+            {
 
-    // Triggered when the player stops looking at the object
-    public void OnDisengage()
-    {
-        Debug.Log("Disengage: " + objectName);
-    }
+                obj.SetActive(true);
+
+        }
+            foreach (GameObject obj in toDeactivate)
+            {
+
+                obj.SetActive(false);
+
+        }
+
+    }    
+}
 }
