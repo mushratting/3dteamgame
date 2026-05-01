@@ -387,7 +387,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Start
 
-        ]'
+'
       objectReference: {fileID: 0}
     - target: {fileID: 4399021004754967349, guid: 06695dc2362424e30a05b495659b38c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
